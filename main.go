@@ -37,7 +37,8 @@ func main() {
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		random := makeRand(5 + rand.Intn(30))
 		h := w.Header()
-		h.Set("Hell", "Empty")
+		h.Set("X-Hell", "Empty")
+		h.Set("X-Repo", "github.com/cvanloo/purgatory")
 		h.Set("Location", outsideDomain + "/" + random)
 		w.WriteHeader(http.StatusFound)
 	})
